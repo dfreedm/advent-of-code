@@ -19,22 +19,21 @@ const readings = fs.readFileSync('./input.txt', 'utf-8').split(/\n/);
 const bitlength = readings[0].length;
 
 function winnowCandidates(candidates, popular = true) {
-  let current = [...candidates];
   for (let char = 0; char < bitlength; char++) {
-    if (current.length === 1) {
+    if (candidates.length === 1) {
       break;
     }
-    let columnSum = current.reduce((acc, r) => acc + parseInt(r[char], 2), 0); 
-    let mostPopular = Math.round(columnSum / current.length);
+    let columnSum = candidates.reduce((acc, r) => acc + parseInt(r[char], 2), 0); 
+    let mostPopular = Math.round(columnSum / candidates.length);
     if (popular) {
       filterBit = String(mostPopular);
     } else {
       filterBit = String(Number(!mostPopular));
     }
     // reduce current set to numbers that have the correct bit at the index
-    current = current.filter(c => c[char] === filterBit);
+    candidates = candidates.filter(c => c[char] === filterBit);
   }
-  return parseInt(current[0], 2);
+  return parseInt(candidates[0], 2);
 }
 
 const oxygenNumber = winnowCandidates([...readings]);
