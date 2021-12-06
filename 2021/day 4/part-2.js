@@ -90,21 +90,21 @@ for (const number of bingoNumbers) {
   if (boards.length === 0) {
     break;
   }
-  console.log({number});
+  // console.log({ number });
   calledNumbers.add(number);
   // there could be multiple winning boards per called number
   const newWinners = [];
   for (const [index, board] of boards.entries()) {
     if (board.checkBingo(calledNumbers)) {
-      newWinners.push({board, index});
+      newWinners.push({ board, index });
     }
   }
   if (newWinners.length > 0) {
     lastWinningNumber = number;
     lastWinningBoard = newWinners[newWinners.length - 1].board;
-    newWinners.reverse().forEach(({index}) => boards.splice(index, 1));
+    newWinners.reverse().forEach(({ index }) => boards.splice(index, 1));
   }
 }
 
-console.log({lastWinningBoard, lastWinningNumber});
+// console.log({ lastWinningBoard, lastWinningNumber });
 console.log(lastWinningBoard.calculateScore(calledNumbers, lastWinningNumber));
