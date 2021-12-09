@@ -50,12 +50,11 @@ for (let [signals, digits] of dataLines) {
   const fives = signals.filter((signal) => signal.length === 5);
   const sixes = signals.filter((signal) => signal.length === 6);
 
-  
   // 2 is missing two segments from 4
-  const two = fives.find(s => diffCount(s, four) === 2 );
+  const two = fives.find((s) => diffCount(s, four) === 2);
 
   // three has all segments of one
-  const three = fives.find(s => diffCount(s, one) === 0);
+  const three = fives.find((s) => diffCount(s, one) === 0);
 
   // five is the last one
   const five = fives.find((s) => s !== three && s !== two);
@@ -85,7 +84,7 @@ for (let [signals, digits] of dataLines) {
 
   for (const [i, digit] of digits.entries()) {
     // console.log({digit});
-    summation += (digitMap.get(digit) * 10**(3 - i));
+    summation += digitMap.get(digit) * 10 ** (3 - i);
   }
 }
 
