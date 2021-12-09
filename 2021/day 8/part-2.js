@@ -2,8 +2,6 @@ import { readData } from "./common.js";
 
 const dataLines = readData("./input.txt");
 
-// 5 segment number missing the same segment from 4 and 1 is 2
-
 // sort the segments alphabetically to do an easier comparison
 function sortSegments(segments) {
   return segments.split("").sort().join("");
